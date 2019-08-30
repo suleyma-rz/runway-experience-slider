@@ -1,0 +1,48 @@
+$width: 800px;
+$slide-width: 200px;
+
+.zooming-slider-container {
+  max-width: $width;
+  overflow-x: auto;
+}
+.zooming-slider {
+  height: 500px;
+  display: block;
+  white-space: nowrap;
+
+  .zoomed-slide {
+    height: 500px;
+    width: $slide-width;
+    display: inline-block;
+
+    &.slide-1 {
+      transform: perspective($slide-width)
+        translate3d(-0.5 * $slide-width, 0, -2 * $slide-width);
+    }
+
+    &.slide-2 {
+      transform: perspective($slide-width)
+        translate3d(-1.75 * $slide-width, 0, -1.5 * $slide-width);
+    }
+
+    &.slide-3 {
+      transform: perspective($slide-width)
+        translate3d(-2.25 * $slide-width, 0, -1 * $slide-width);
+    }
+
+    &.slide-4 {
+      transform: perspective($slide-width)
+        translate3d(-2 * $slide-width, 0, -0.5 * $slide-width);
+    }
+
+    &.slide-5 {
+      transform: perspective($slide-width)
+        translate3d(-1.75 * $slide-width, 0, -0.25 * $slide-width);
+    }
+
+    &.slide-6 {
+      transform: perspective($slide-width)
+        translate3d(-1.25 * $slide-width, 0, 0);
+    }
+  }
+}
