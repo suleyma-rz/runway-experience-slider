@@ -1,7 +1,6 @@
 import React from 'react';
 import ZoomingSlider from '../components/zooming-slider';
 
-/*ABCDEF*/
 const slidesData = [
   { title: 'Hello', text: 'Hello', color: '#F00FFF' },
   { title: 'Hello1', text: 'Hello', color: '#F00FEE' },

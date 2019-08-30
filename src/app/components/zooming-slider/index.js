@@ -1,48 +1,30 @@
 // @flow
 import React from 'react';
 import './index.styles.scss';
+import ZoomedSlide from './slide';
+import { SliderPropsT } from './types';
 
-type SlidePropsT = {
-  title: string,
-  color: string
-};
-
-type SlideT = {
-  item: SlidePropsT,
-  index: number
-};
-
-type SliderPropsT = {
-  slides: Array<SlidePropsT>
-};
-
-class ZoomedSlide extends React.Component<SlideT> {
+class ZoomingSlider extends React.Component<SliderPropsT> {
   constructor(props) {
     super(props);
-    this._slide = React.createRef();
+    this._scrollable = React.createRef();
+  }
+
+  componentDidMount() {
+    this._scrollable.current.scrollLeft = 1200;
   }
 
   render() {
     return (
-      <div
-        ref={this._slide}
-        className={`zoomed-slide slide-${this.props.index + 1}`}
-        style={{ backgroundColor: this.props.item.color }}
-      />
+      <div className="zooming-slider-container" ref={this._scrollable}>
+        <div className="zooming-slider">
+          {this.props.slides.reverse().map((item, index) => (
+            <ZoomedSlide key={item.title} item={item} index={index} />
+          ))}
+        </div>
+      </div>
     );
   }
 }
-
-const ZoomingSlider = ({ slides }: SliderPropsT) => {
-  return (
-    <div className="zooming-slider-container">
-      <div className="zooming-slider">
-        {slides.reverse().map((item, index) => (
-          <ZoomedSlide key={item.title} item={item} index={index} />
-        ))}
-      </div>
-    </div>
-  );
-};
 
 export default ZoomingSlider;

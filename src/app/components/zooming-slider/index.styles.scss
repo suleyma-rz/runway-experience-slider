@@ -4,7 +4,13 @@ $slide-width: 200px;
 .zooming-slider-container {
   max-width: $width;
   overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
+
 .zooming-slider {
   height: 500px;
   display: block;
