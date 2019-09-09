@@ -14,9 +14,17 @@ class ZoomingSlider extends React.Component<SliderPropsT> {
     this._scrollable.current.scrollLeft = 1200;
   }
 
+  handleScroll = e => {
+    console.log(e);
+  };
+
   render() {
     return (
-      <div className="zooming-slider-container" ref={this._scrollable}>
+      <div
+        className="zooming-slider-container"
+        ref={this._scrollable}
+        onScroll={this.handleScroll}
+      >
         <div className="zooming-slider">
           {this.props.slides.reverse().map((item, index) => (
             <ZoomedSlide key={item.title} item={item} index={index} />
